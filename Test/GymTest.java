@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -56,7 +57,9 @@ public class GymTest {
 
     @Test
     public void writeToFileTest(){
-        String outpath = "Test/outdata";
+        //request to enter an output file name for test purpose to avoid append error
+        String newOutputFileNameForTest = JOptionPane.showInputDialog("Enter an output file name for test purpose");
+        String outpath = "Test/" + newOutputFileNameForTest;
         Person p = new Person("8204021234","Bear Belle","2012-12-12");
         Person p2 = new Person("2204021234","Bear2 Belle","2012-12-12");
         Person p3 = new Person("4204021234","Bear3 Belle","2012-12-12");
