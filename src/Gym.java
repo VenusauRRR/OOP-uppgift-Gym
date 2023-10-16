@@ -13,14 +13,17 @@ public class Gym {
         customerList = new ArrayList<>();
     }
 
+    //check if the input person is a customer
     public Person isCustomer(String personNr, String name){
         for (Person i : customerList){
-            if (i.isPersonNrValid(personNr) && i.isPersonNameValid(name)){
+            if (i.isPersonNrValid(personNr) || i.isPersonNameValid(name)){
                 return i;
             }
         }
         return null;
     }
+
+    //read data from a file
     public void readFrånFile(String inputFilePath){
         Path inpath = Paths.get(inputFilePath);
         try(BufferedReader br = Files.newBufferedReader(inpath)){
@@ -38,6 +41,7 @@ public class Gym {
         }
     }
 
+    //write data to a file
     public void writeToFile(Person p, String outputFilePath){
         Path outpath = Paths.get(outputFilePath);
         try{

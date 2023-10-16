@@ -6,10 +6,11 @@ public class PersonTest {
 
     @Test
     public void isPersonNrValidTest(){
+        Person p2 = new Person("8512021234","Chamade Coriola","2018-03-12");
         String pn1 = "8512021234";
         String pn2 = "123abc";
-        assertTrue(p1.isPersonNrValid(pn1));
-        assertFalse(p1.isPersonNrValid(pn2));
+        assertTrue(p2.isPersonNrValid(pn1));
+        assertFalse(p2.isPersonNrValid(pn2));
     }
 
     @Test

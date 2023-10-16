@@ -23,9 +23,13 @@ public class Person {
         this.name = name;
         this.lastVisitedDate = lastVisitedDate;
     }
+
+    //check if the input person number matches the database
     public boolean isPersonNrValid(String personNr){
         return personNr.equals(this.personNr) ? true : false;
     }
+
+    //check if the input person name matches the database
     public boolean isPersonNameValid(String name){
         return name.equalsIgnoreCase(this.name) ? true : false;
     }
