@@ -17,7 +17,6 @@ public class Person {
         this.name = name;
         this.lastVisitedDate = DateGym.parseDate(lastVisitedDate);
     }
-
     public Person(String personNr, String name, LocalDate lastVisitedDate) {
         this.personNr = personNr;
         this.name = name;

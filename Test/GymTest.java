@@ -57,7 +57,10 @@ public class GymTest {
 
     @Test
     public void writeToFileTest(){
-        //data in output file should be deleted before testing because there's a APPEND method inside the test method
+        /*
+        IMPORTANT!!!
+        delete data from output file before running test, otherwise it will be test failed due to APPEND data
+        */
         String outpath = "Test/outputTest";
         Person p = new Person("8204021234","Bear Belle","2012-12-12");
         Person p2 = new Person("2204021234","Bear2 Belle","2012-12-12");
