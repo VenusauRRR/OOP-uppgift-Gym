@@ -57,9 +57,8 @@ public class GymTest {
 
     @Test
     public void writeToFileTest(){
-        //request to enter an output file name for test purpose to avoid append error
-        String newOutputFileNameForTest = JOptionPane.showInputDialog("Enter an output file name for test purpose");
-        String outpath = "Test/" + newOutputFileNameForTest;
+        //data in output file should be deleted before testing because there's a APPEND method inside the test method
+        String outpath = "Test/outputTest";
         Person p = new Person("8204021234","Bear Belle","2012-12-12");
         Person p2 = new Person("2204021234","Bear2 Belle","2012-12-12");
         Person p3 = new Person("4204021234","Bear3 Belle","2012-12-12");
@@ -70,5 +69,17 @@ public class GymTest {
         g1.writeToFile(p4, outpath);
         assertTrue(countLinesInFile(outpath)==8);
         assertTrue(countLinesInFile(outpath)!=7);
+    }
+
+    @Test
+    public void askVariableTest(){
+        String personNr = "1235468790";
+        String name = "Green Tree";
+        boolean isTest = true;
+        assertTrue(g1.askVariable(isTest,personNr,null).equals("1235468790"));
+        assertTrue(!g1.askVariable(isTest,personNr,null).equals("123"));
+        assertTrue(g1.askVariable(isTest,name,null).equals("Green Tree"));
+        assertTrue(!g1.askVariable(isTest,name,null).equals("Yellow"));
+
     }
 }

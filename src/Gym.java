@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,10 +14,14 @@ public class Gym {
         customerList = new ArrayList<>();
     }
 
+    public String askVariable(boolean isTest, String testData, String descriptionForUserData){
+        return isTest ? testData : JOptionPane.showInputDialog(null,descriptionForUserData);
+    }
+
     //check if the input person is a customer
     public Person isCustomer(String personNr, String name){
         for (Person i : customerList){
-            if (i.isPersonNrValid(personNr) || i.isPersonNameValid(name)){
+            if (i.isPersonNrValid(personNr) && i.isPersonNameValid(name)){
                 return i;
             }
         }

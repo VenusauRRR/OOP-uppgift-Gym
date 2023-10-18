@@ -1,9 +1,9 @@
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class DateGymTest {
 
@@ -25,7 +25,11 @@ public class DateGymTest {
     public void parseDateTest(){
         String st = "2022-11-23";
         String st1 = "1999-12-02";
+        String st2 = "abc";
         assertTrue(st.equals(DateGym.parseDate(st).toString()));
         assertFalse(st1.equals(DateGym.parseDate(st).toString()));
+
+        Throwable exception = assertThrows(DateTimeParseException.class,
+                () -> DateGym.parseDate(st2));
     }
 }
