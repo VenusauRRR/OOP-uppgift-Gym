@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -28,7 +29,7 @@ public class Person {
     }
 
     //check if the input person number matches the database
-    public boolean isPersonNrValid(String personNr){
+    public static boolean isPersonNrValid(String personNr){
         if (!isPersonNrLengthValid(personNr)){
             return false;
         }
@@ -38,40 +39,40 @@ public class Person {
         if (!isStringNumeric(personNr.substring(6))){
             return false;
         }
-        return personNr.equals(this.personNr) ? true : false;
+        return true;
     }
 
     //check if person number has correct length
-    public boolean isPersonNrLengthValid(String personNr){
-        return personNr.length()==10 ? true : false;
+    public static boolean isPersonNrLengthValid(String personNr){
+        if (personNr.length()==10){
+            return true;
+        }
+        throw new IllegalStateException("Length too short");
     }
 
     //check if last 4 digits in personNr is numeric
-    public boolean isStringNumeric(String personNr){
+    public static boolean isStringNumeric(String personNr){
         try {
             Double.parseDouble(personNr);
             return true;
         } catch (NumberFormatException e){
-            System.out.println("person number should only contain numbers");
-            return false;
+            throw new NumberFormatException("Last 4 digits in person number invalid");
         }
     }
 
-    //check if the input person name matches the database
-    public boolean isPersonNameValid(String name){
-        return name.equalsIgnoreCase(this.name) ? true : false;
-    }
+//    //check if the input person name matches the database
+//    public boolean isPersonNameValid(String name){
+//        return name.equalsIgnoreCase(this.name) ? true : false;
+//    }
 
     //check if birthdate in person number is a date
-    public boolean isPersonNrDateValid(String personNr){
-//        SimpleDateFormat sf = new SimpleDateFormat("yyMMdd");
+    public static boolean isPersonNrDateValid(String personNr){
         try {
             DateTimeFormatter f = DateTimeFormatter.ofPattern("yyMMdd");
             LocalDate ld = LocalDate.parse(personNr, DateTimeFormatter.ofPattern("yyMMdd"));
             return true;
         } catch (DateTimeParseException e){
-            System.out.println("person number date is invalid");
-            return false;
+            throw new DateTimeException("Birthday invalid");
         }
     }
 

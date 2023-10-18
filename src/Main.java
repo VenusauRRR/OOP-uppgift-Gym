@@ -5,8 +5,8 @@ public class Main {
         Gym bestGymEver = new Gym();
         bestGymEver.readFrånFile("src/InputData");
 
-        String outputPath_current_customer = "src/Out_Old_Customer";
-        String outputPath_old_customer = "src/Out_Current_Customer";
+        String outputPath_current_customer = "src/Out_Current_Customer";
+        String outputPath_old_customer = "src/Out_Old_Customer";
         String outputPath_unknown_person = "src/Out_Unknown_Customer";
         String outputPath_trainer = "src/Out_To_Trainer";
 
@@ -18,8 +18,8 @@ public class Main {
         while (true){
 
             //TDD with datainput
-            personNr = bestGymEver.askVariable(isTest, null, "Enter your person number");
-            name = bestGymEver.askVariable(isTest, null, "Enter your name");
+            personNr = bestGymEver.askVariable(isTest, "2310181234", "Enter your person number");
+            name = bestGymEver.askVariable(isTest, "Venus", "Enter your name");
 
             //exit the program if no input is received
             if (personNr == null && name == null){
@@ -29,6 +29,14 @@ public class Main {
             //send error message if input is empty
             if (personNr == null || personNr.isEmpty() || name == null || name.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Person number or name cannot be empty");
+                continue;
+            }
+
+            //send error message if person number is invalid
+            try {
+                Person.isPersonNrValid(personNr);
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null,e.getMessage());
                 continue;
             }
 

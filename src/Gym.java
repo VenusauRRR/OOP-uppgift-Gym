@@ -21,7 +21,7 @@ public class Gym {
     //check if the input person is a customer
     public Person isCustomer(String personNr, String name){
         for (Person i : customerList){
-            if (i.isPersonNrValid(personNr) && i.isPersonNameValid(name)){
+            if (i.getPersonNr().equals(personNr) && i.getName().equals(name)){
                 return i;
             }
         }
