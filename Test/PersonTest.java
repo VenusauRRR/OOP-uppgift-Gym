@@ -21,4 +21,30 @@ public class PersonTest {
         assertTrue(p1.isPersonNameValid(n1));
         assertFalse(p1.isPersonNameValid(n2));
     }
+
+    @Test
+    public void isPersonNrLengthValidTest(){
+        String st1 = "1234567890";
+        String st2 = "123";
+        assertTrue(p1.isPersonNrLengthValid(st1));
+        assertTrue(!p1.isPersonNrLengthValid(st2));
+    }
+
+    @Test
+    public void isStringNumericTest(){
+        String st1 = "1234567890";
+        String st2 = "abc1234567";
+        assertTrue(p1.isStringNumeric(st1));
+        assertTrue(!p1.isStringNumeric(st2));
+    }
+    @Test
+    public void isPersonNrDateValidTest(){
+        String st1 = "123456";
+        String st2 = "231220";
+        String st3 = "851202";
+//        assertTrue(!p1.isPersonNrDateValid(st1));
+//        assertTrue(p1.isPersonNrDateValid(st2));
+        assertTrue(p1.isPersonNrDateValid(st3));
+
+    }
 }
